@@ -32,4 +32,4 @@ Pending.
     - [ ] Analyse feature importance
 - [ ] Run a Logistic Regressor model with the features extracted from the audio wave files.
     - [ ] Analyse model coeficients.
-- [ ] Save all plots in *results* folder.   
+- [X] Save all plots in *results* folder.   
