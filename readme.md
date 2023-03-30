@@ -16,20 +16,27 @@ The LazyPredict library is used to train a model with different algorithms. The 
 |-----------|----------|-------------------|---------|----------|
 | LGBMClassifier | 0.88 | 0.89 | 0.89 | 0.88 | 
 | XGBClassifier | 0.88 | 0.89 | 0.89 | 0.88 |
-| RandomForestClassifier | 0.88 | 0.89 | 0.89 | 0.88 |
-| KNeighborsClassifier | 0.88 | 0.89 | 0.89 | 0.88 |
+| RandomForestClassifier | 0.87 | 0.87 | 0.87 | 0.87 |
+| KNeighborsClassifier | 0.89 | 0.88 | 0.88 | 0.89 |
+| LogisticRegression | 0.84 | 0.85 | 0.85 | 0.84 |
 
+### LG and LGBM Classifiers
+
+| Algorithm | Accuracy |
+|-----------|----------|
+| LGBMClassifier | 89.15% |
+| LGBMClassifier | 88.66% |
 
 ## DL for images approach
 Pending. 
 
 ## TO DO List
-- [ ] Correct Classic AI approach table and finish it for the best 5-6 algorithms.
-- [ ] Show best results of Classic AI approach on readme.
-- [ ] Run an LGBM model with the features extracted from the audio wave files.
-    - [ ] Analyse feature importance
-- [ ] Run an XGB model with the features extracted from the audio wave files.
-    - [ ] Analyse feature importance
+- [X] Correct Classic AI approach table and finish it for the best 5-6 algorithms.
+- [X] Show best results of Classic AI approach on readme.
+- [X] Run an LGBM model with the features extracted from the audio wave files.
+    - [X] Analyse feature importance
+- [X] Run an XGB model with the features extracted from the audio wave files.
+    - [X] Analyse feature importance
 - [ ] Run a Logistic Regressor model with the features extracted from the audio wave files.
     - [ ] Analyse model coeficients.
 - [X] Save all plots in *results* folder.   
