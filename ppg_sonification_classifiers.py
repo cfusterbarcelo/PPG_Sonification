@@ -23,7 +23,7 @@ balance = False
 # =============== READ DATASET ===============
 # ============================================
 # Read csv data: 
-df = pd.read_csv('./data/salida15sec.arff.csv', sep=',')
+df = pd.read_csv('./data_ppg_sonification/salida15sec.arff.csv', sep=',')
 # Split data and labels
 ## x and y: x = data, y = last column
 x = df.iloc[:, :-1]
@@ -66,7 +66,7 @@ clf = LazyClassifier(verbose=0, ignore_warnings=True, custom_metric=None)
 models, predictions = clf.fit(x_train, x_test, y_train, y_test)
 print(models)
 # Export results to csv
-models.to_csv('./results/results_'+str(balance)+'.csv')
+models.to_csv('./results_ppg_sonification_classifiers/results_'+str(balance)+'.csv')
 
 ## ============ KNN MODEL AND RESULTS =========
 ## MODEL CROSSVALIDATION
@@ -75,51 +75,35 @@ knn = KNeighborsClassifier()
 param_grid = {'n_neighbors': np.arange(1, 25)}
 knn_gscv = GridSearchCV(knn, param_grid, cv=5)
 knn_gscv.fit(x_train, y_train)
-select_best_model = knn_gscv.best_estimator_
+knn_best_model = knn_gscv.best_estimator_
 
 ## RESULTS
-prediction_knn = select_best_model.predict(x_test)
+prediction_knn = knn_best_model.predict(x_test)
 cm_knn = confusion_matrix(y_test, prediction_knn)
 # Store cm_knn in a file
 cm_knn = pd.DataFrame(cm_knn)
-cm_knn.to_csv('./results/cm_knn_'+str(balance)+'.csv')
+cm_knn.to_csv('./results_ppg_sonification_classifiers/cm_knn_'+str(balance)+'.csv')
 print(cm_knn)
 cr_knn = classification_report(y_test, prediction_knn)
 print(cr_knn)
 ### Store results in a dictionary
 results_knn = {
-    'model': select_best_model,
+    'model': knn_best_model,
     'confusion_matrix': cm_knn,
     'classification_report': cr_knn
 }
 ### Export results to pickle
-pickle.dump(results_knn, open('./results/results_knn_'+str(balance)+'.pkl', 'wb'))
+pickle.dump(results_knn, open('./results_ppg_sonification_classifiers/results_knn_'+str(balance)+'.pkl', 'wb'))
 
 # ================== PLOTS for KNN ===================
 ## Plot confusion matrix
 plt.figure(figsize=(10, 7))
-sns.heatmap(cm_rf, annot=True)
+sns.heatmap(cm_knn, annot=True)
 plt.xlabel('Predicted')
 plt.ylabel('Truth')
 plt.title('Confusion Matrix for KNN')
+plt.savefig('./results_ppg_sonification_classifiers/cm_knn_'+str(balance)+'.png')
 plt.show()
-
-## Extract feature importance that are only > 0
-importances_knn = best_model.feature_importances_
-indices_knn = np.where(importances_knn > 0)[0]
-importances_knn = importances_knn[indices_knn]
-columns_knn = x.columns[indices_knn]
-
-# Plot mean of feature importance as a lineplot and std as a shaded area
-plt.figure(figsize=(10, 7))
-plt.plot(columns_knn, importances_knn, color='blue', marker='o', linestyle='dashed', linewidth=2, markersize=12)
-plt.fill_between(columns_knn, importances_knn - np.std(importances_knn), importances_knn + np.std(importances_knn), alpha=0.2)
-plt.xticks(columns_knn, rotation=90)
-plt.xlabel('Features')
-plt.title('KNN Feature Importance')
-plt.show()
-plt.savefig('./results/feature_importance_knn_'+str(balance)+'.png')
-
 
 ## ================== RF MODEL AND RESULTS ===================
 ## MODEL CROSSVALIDATION
@@ -139,26 +123,26 @@ grid = GridSearchCV(
     cv=5,
     verbose=2,
 )
-grid_results = grid.fit(x_train, y_train)
-best_model = grid_results.best_estimator_
+rf_gscv = grid.fit(x_train, y_train)
+rf_best_model = rf_gscv.best_estimator_
 
 ## RESULTS
-prediction_rf = select_best_model.predict(x_test)
+prediction_rf = rf_best_model.predict(x_test)
 cm_rf = confusion_matrix(y_test, prediction_rf)
 # Store cm_knn in png file
 cm_rf = pd.DataFrame(cm_rf)
-cm_rf.to_csv('./results/cm_rf_'+str(balance)+'.csv')
+cm_rf.to_csv('./results_ppg_sonification_classifiers/cm_rf_'+str(balance)+'.csv')
 print(cm_rf)
 cr_rf = classification_report(y_test, prediction_rf)
 print(cr_rf)
 ### Store results in a dictionary
 results_rf = {
-    'model': select_best_model,
+    'model': rf_best_model,
     'confusion_matrix': cm_rf,
     'classification_report': cr_rf
 }
 ### Export results to pickle
-pickle.dump(results_rf, open('./results/results_rf_'+str(balance)+'.pkl', 'wb'))
+pickle.dump(results_rf, open('./results_ppg_sonification_classifiers/results_rf_'+str(balance)+'.pkl', 'wb'))
 
 # ================== PLOTS for RF ===================
 # TODO: repeat for knn
@@ -168,10 +152,11 @@ sns.heatmap(cm_rf, annot=True)
 plt.xlabel('Predicted')
 plt.ylabel('Truth')
 plt.title('Confusion Matrix for RF')
+plt.savefig('./results_ppg_sonification_classifiers/cm_rf_'+str(balance)+'.png')
 plt.show()
 
 ## Extract feature importance that are only > 0
-importances_rf = best_model.feature_importances_
+importances_rf = rf_best_model.feature_importances_
 indices_rf = np.where(importances_rf > 0)[0]
 importances_rf = importances_rf[indices_rf]
 columns_rf = x.columns[indices_rf]
@@ -183,8 +168,8 @@ plt.fill_between(columns_rf, importances_rf - np.std(importances_rf), importance
 plt.xticks(columns_rf, rotation=90)
 plt.xlabel('Features')
 plt.title('Random Forest Feature Importance')
+plt.savefig('./results_ppg_sonification_classifiers/feature_importance_rf_'+str(balance)+'.png')
 plt.show()
-plt.savefig('./results/feature_importance_rf_'+str(balance)+'.png')
 
 ## ================== LGBM MODEL AND RESULTS ===================
 # Crossvalidate LGBMClassifier (best model) with gridsearch
@@ -245,7 +230,7 @@ results['Gradient Boosting Classifier'] = {
     'classification_report': report_gb
 }
 ### Export results to pickle
-pickle.dump(results, open('./results/results_lgbm_'+str(balance)+'.pkl', 'wb'))
+pickle.dump(results, open('./results_ppg_sonification_classifiers/results_lgbm_'+str(balance)+'.pkl', 'wb'))
 
 # ================== PLOTS for LGBM ===================
 # CM
@@ -256,7 +241,7 @@ plt.title('Confusion Matrix for LGBM Classifier')
 plt.subplot(1,2,2)
 sns.heatmap(cm_gb, annot=True, cmap='Blues')
 plt.title('Confusion Matrix for Gradient Boosting Classifier')
-plt.savefig('./results/cm_lgbm_gb_'+str(balance)+'.png')
+plt.savefig('./results_ppg_sonification_classifiers/cm_lgbm_gb_'+str(balance)+'.png')
 plt.show()
 
 ## Extract feature importance that are only > 0 for LGBM
@@ -278,8 +263,8 @@ plt.fill_between(columns_lgbm, importances_lgbm - np.std(importances_lgbm), impo
 plt.xticks(columns_lgbm, rotation=90)
 plt.xlabel('Features')
 plt.title('LGBM Feature Importance')
+plt.savefig('./results_ppg_sonification_classifiers/feature_importance_lgbm_'+str(balance)+'.png')
 plt.show()
-plt.savefig('./results/feature_importance_lgbm_'+str(balance)+'.png')
 
 plt.figure(figsize=(10, 7))
 plt.plot(columns_gb, importances_gb, color='blue', marker='o', linestyle='dashed', linewidth=2, markersize=12)
@@ -287,5 +272,5 @@ plt.fill_between(columns_gb, importances_gb - np.std(importances_gb), importance
 plt.xticks(columns_gb, rotation=90)
 plt.xlabel('Features')
 plt.title('GB Feature Importance')
+plt.savefig('./results_ppg_sonification_classifiers/feature_importance_gb_'+str(balance)+'.png')
 plt.show()
-plt.savefig('./results/feature_importance_gb_'+str(balance)+'.png')

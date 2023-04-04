@@ -20,12 +20,40 @@ The LazyPredict library is used to train a model with different algorithms. The 
 | KNeighborsClassifier | 0.89 | 0.88 | 0.88 | 0.89 |
 | LogisticRegression | 0.84 | 0.85 | 0.85 | 0.84 |
 
+### Random Forest Classifier
+With a Random Forest (RF) Classifier, the final accuracy achieved is a 90% without balancing with SMOTE. The confusion matrix is the following:
+
+![Confusion Matrix from RF](./results_ppg_sonification_classifiers/cm_knn_False.csv)
+
+### KNearestNeighbors Classifier
+The next experiment is done through a KNearestNeighbors (KNN) Classifier. The final accuracy achieved is a 87% without balancing with SMOTE. The confusion matrix is the following:
+
+![Confusion Matrix from KNN](./results_ppg_sonification_classifiers/cm_knn_False.csv)
+
+With a KNN we are able to extract some explainability through analysis of the feature importance. The following plot shows the feature importance of the KNN model:
+
+![Feature importance from KNN](./results_ppg_sonification_classifiers/feature_importance_knn_False.csv)
+
+
 ### LG and LGBM Classifiers
 
 | Algorithm | Accuracy |
 |-----------|----------|
 | LGBMClassifier | 89.15% |
-| LGBMClassifier | 88.66% |
+| GBClassifier | 88.66% |
+
+Confusion matrix from both classifiers are the following:
+
+![Confusion Matrix from LGBM](./results_ppg_sonification_classifiers/cm_lgbm_fb_False.png)
+
+Then, we have been able to also extract feature importance for both models. The following plot shows the feature importance of the LGBM model:
+
+![Feature importance from LGBM](./results_ppg_sonification_classifiers/feature_importance_lgbm_fb_False.png)
+
+THis is the feature importance for the GB model:
+
+![Feature importance from GB](./results_ppg_sonification_classifiers/feature_importance_gb_fb_False.png)
+
 
 ## DL for images approach
 Pending. 
@@ -39,4 +67,5 @@ Pending.
     - [X] Analyse feature importance
 - [ ] Run a Logistic Regressor model with the features extracted from the audio wave files.
     - [ ] Analyse model coeficients.
-- [X] Save all plots in *results* folder.   
+- [X] Save all plots in *results* folder.  
+- [ ] Run a CNN with the results on images. 
