@@ -23,17 +23,25 @@ The LazyPredict library is used to train a model with different algorithms. The 
 ### Random Forest Classifier
 With a Random Forest (RF) Classifier, the final accuracy achieved is a 90% without balancing with SMOTE. The confusion matrix is the following:
 
-![Confusion Matrix from RF](./results_ppg_sonification_classifiers/cm_knn_False.csv)
+<img src="./results_ppg_sonification_classifiers/cm_knn_False.png"
+     alt="Confusion Matrix from RF"
+     width="40%"
+     heigth="40%">
 
 ### KNearestNeighbors Classifier
 The next experiment is done through a KNearestNeighbors (KNN) Classifier. The final accuracy achieved is a 87% without balancing with SMOTE. The confusion matrix is the following:
 
-![Confusion Matrix from KNN](./results_ppg_sonification_classifiers/cm_knn_False.csv)
+<img src="./results_ppg_sonification_classifiers/cm_knn_False.png"
+     alt="Confusion Matrix from KNN"
+     width="40%"
+     heigth="40%">
 
 With a KNN we are able to extract some explainability through analysis of the feature importance. The following plot shows the feature importance of the KNN model:
 
-![Feature importance from KNN](./results_ppg_sonification_classifiers/feature_importance_knn_False.csv)
-
+<img src="./results_ppg_sonification_classifiers/feature_importance_knn_False.png"
+     alt="Feature importance from KNN"
+     width="40%"
+     heigth="40%">
 
 ### LG and LGBM Classifiers
 
@@ -44,16 +52,24 @@ With a KNN we are able to extract some explainability through analysis of the fe
 
 Confusion matrix from both classifiers are the following:
 
-![Confusion Matrix from LGBM](./results_ppg_sonification_classifiers/cm_lgbm_fb_False.png)
+<img src="./results_ppg_sonification_classifiers/cm_lgbm_gb_False.png"
+     alt="Confusion Matrix from LGBM"
+     width="70%"
+     heigth="70%">
 
-Then, we have been able to also extract feature importance for both models. The following plot shows the feature importance of the LGBM model:
 
-![Feature importance from LGBM](./results_ppg_sonification_classifiers/feature_importance_lgbm_fb_False.png)
+Then, we have been able to also extract feature importance for both models. The following plots shows the feature importance of the LGBM and GB model:
 
-THis is the feature importance for the GB model:
-
-![Feature importance from GB](./results_ppg_sonification_classifiers/feature_importance_gb_fb_False.png)
-
+<p align="center">
+    <img src="./results_ppg_sonification_classifiers/feature_importance_lgbm_False.png"
+     alt="Feature importance from LGBM"
+     width="40%"
+     heigth="40%">
+    <img src="./results_ppg_sonification_classifiers/feature_importance_gb_False.png"
+     alt="Feature importance from GB"
+     width="40%"
+     heigth="40%">
+ </p>
 
 ## DL for images approach
 Pending. 
