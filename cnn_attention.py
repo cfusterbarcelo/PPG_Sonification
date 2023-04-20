@@ -139,7 +139,7 @@ class CNN(nn.Module):
         self.relu = nn.ReLU()
 
         # Linear layers
-        self.fc1 = nn.Linear(35328, 256)
+        self.fc1 = nn.Linear(197136, 256)
         self.fc2 = nn.Linear(256, 1)
         # sigmoid layer
         self.sig = nn.Sigmoid()
@@ -154,8 +154,10 @@ class CNN(nn.Module):
         outattn = self.attn1(x)
 
         x = outattn.flatten(start_dim=1)
+        
         x = self.fc1(x)
         x = self.relu(x)
+        x = self.dropout1(x)
         x = self.fc2(x)
         x = self.sig(x)
 
@@ -178,10 +180,24 @@ class CNN_trainer(CNN):
         # LOSS EVOLUTION
         self.loss_during_training = []
         self.valid_loss_during_training = []
-
+        self.accuracy_during_training = []
+        self.valid_accuracy_during_training = []
         # GPU
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.to(self.device)
+
+    # Define a function that stores the best model given val accuracy
+    def save_best_model(self, val_acc, model, optimizer, epoch, path):
+        state = {
+            "epoch": epoch,
+            "state_dict": model.state_dict(),
+            "optimizer": optimizer.state_dict(),
+            "val_acc": val_acc,
+        }
+        dir_path = os.path.dirname(path)
+        if not os.path.isdir(dir_path):
+            os.makedirs(dir_path)
+        torch.save(state, path)
 
     def trainloop(self, trainloader, validloader):
 
@@ -190,6 +206,7 @@ class CNN_trainer(CNN):
         for e in range(int(self.epochs)):
 
             running_loss = 0.0
+            running_accuracy= 0.0
 
             for images, labels in trainloader:
 
@@ -201,20 +218,24 @@ class CNN_trainer(CNN):
                 pred, _ = self.forward(images)
 
                 loss = self.criterion(pred, labels.type(torch.float32))
-
+                # Calculate accuracy in training loop
+                accuracy = (pred.round() == labels).sum().float() / len(labels)
                 loss.backward()
 
                 self.optim.step()
 
                 running_loss += loss.item()
+                running_accuracy +=accuracy.item()
 
             self.loss_during_training.append(running_loss / len(trainloader))
+            self.accuracy_during_training.append(running_accuracy / len(trainloader))
 
             # Validation
             # Turn off gradients for validation, saves memory and computations
             with torch.no_grad():
 
                 running_loss = 0.0
+                running_accuracy = 0.0
 
                 for images, labels in validloader:
 
@@ -224,10 +245,23 @@ class CNN_trainer(CNN):
                     pred, _ = self.forward(images)
 
                     loss = self.criterion(pred, labels.type(torch.float32))
+                    accuracy = (pred.round() == labels).sum().float() / len(labels)
 
                     running_loss += loss.item()
+                    running_accuracy += accuracy.item()
 
                 self.valid_loss_during_training.append(running_loss / len(validloader))
+                self.valid_accuracy_during_training.append(running_accuracy / len(validloader))
+
+            # If actual val accuracy is better than the best one, save the model
+            if self.valid_accuracy_during_training[-1] >= max(self.valid_accuracy_during_training):
+                self.save_best_model(
+                    self.valid_accuracy_during_training[-1],
+                    self,
+                    self.optim,
+                    e,
+                    "./results_cnn/checkpoint/model_best.pth.tar",
+                )
 
             print(
                 "\nTrain Epoch: {} -> Training Loss: {:.6f}".format(
@@ -235,8 +269,18 @@ class CNN_trainer(CNN):
                 )
             )
             print(
+                "Train Epoch: {} -> Training Accuracy: {:.6f}".format(
+                    e, self.accuracy_during_training[-1]
+                    )
+            )
+            print(
                 "Train Epoch: {} -> Validation Loss: {:.6f}".format(
                     e, self.valid_loss_during_training[-1]
+                )
+            )
+            print(
+                "Train Epoch: {} -> Validation Accuracy: {:.6f}".format(
+                    e, self.valid_accuracy_during_training[-1]
                 )
             )
 
@@ -270,33 +314,37 @@ transform = torchvision.transforms.ToTensor()
 dataset = torchvision.datasets.ImageFolder(root=dataset_path, transform=transform)
 
 # Split the dataset into train, validation and test sets
-train_size = int(0.8 * len(dataset))
-val_size = int(0.2 * len(dataset))
+train_size = int(0.7 * len(dataset))
+val_size = int(0.1 * len(dataset))
 test_size = len(dataset) - train_size - val_size
 
 train_dataset, val_dataset, test_dataset = torch.utils.data.random_split(dataset, [train_size, val_size, test_size])
 
 # Create the data loaders
-batch_size = 16
+batch_size = 32
 
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
 
 ################################# TRAINING #################################
-
-# Train the model
-import os
-
 # Set cuda enviroment os = 0
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-model = CNN_trainer(gate_channels=16, lr=1e-3, epochs=10)
+model = CNN_trainer(gate_channels=16, lr=1e-3, epochs=35)
 model.trainloop(trainloader=train_loader, validloader=val_loader)
 
-# Evaluate the model
-model.eval_performance(test_loader)
+# Restore best model in results_cnn/checkpoint/model_best.pth.tar
+model.load_state_dict(torch.load("./results_cnn/checkpoint/model_best.pth.tar")["state_dict"])
 
+# Evaluate the model
+test_accuracy = model.eval_performance(test_loader)
+print("Test Accuracy: {:.6f}".format(test_accuracy))
+
+# Plot the loss and accuracy during training
+plt.plot(model.accuracy_during_training, label="Accuracy")
+plt.plot(model.valid_accuracy_during_training, label="Validation Accuracy")
+plt.legend()
 
 # Analyse attention weights
 img, labels = next(iter(test_loader))
