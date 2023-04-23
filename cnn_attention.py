@@ -260,7 +260,7 @@ class CNN_trainer(CNN):
                     self,
                     self.optim,
                     e,
-                    "./results_cnn/checkpoint/model_best.pth.tar",
+                    "./results_cnn/checkpoint/model_best"+str(e)+".pth.tar",
                 )
 
             print(
@@ -285,23 +285,31 @@ class CNN_trainer(CNN):
             )
 
     def eval_performance(self, dataloader):
-
-        loss = 0
-        accuracy = 0
-
-        # Turn off gradients for validation, saves memory and computations
-        with torch.no_grad():
-
+            
+            self.eval()
+    
+            running_loss = 0.0
+            running_accuracy = 0.0
+    
             for images, labels in dataloader:
-                # Move input and label tensors to the default device
-                images, labels = images.to(self.device), labels.to(self.device)
-                probs, _ = self.forward(images)
-
-                labels_pred = torch.round(probs)
-                equals = labels_pred == labels
-                accuracy += torch.mean(equals.type(torch.FloatTensor))
-
-            return accuracy / len(dataloader)
+    
+                images = images.to(self.device)
+                labels = labels.to(self.device).view(-1, 1)
+    
+                pred, _ = self.forward(images)
+    
+                loss = self.criterion(pred, labels.type(torch.float32))
+                accuracy = (pred.round() == labels).sum().float() / len(labels)
+    
+                running_loss += loss.item()
+                running_accuracy += accuracy.item()
+    
+            print(
+                "Test Loss: {:.6f}".format(running_loss / len(dataloader))
+            )
+            print(
+                "Test Accuracy: {:.6f}".format(running_accuracy / len(dataloader))
+            )
 
 ############################ DATASET ############################
 
@@ -327,11 +335,21 @@ train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True)
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
 
+# # Plot 5 images from the dataset
+# fig, axes = plt.subplots(1, 5, figsize=(20, 20))
+# axes = axes.flatten()
+# for img, label in train_loader:
+#     for i, ax in enumerate(axes):
+#         ax.imshow(img[i].permute(1, 2, 0))
+#         ax.set_title(label[i])
+#         ax.axis("off")
+#     break
+
 ################################# TRAINING #################################
 # Set cuda enviroment os = 0
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-model = CNN_trainer(gate_channels=16, lr=1e-3, epochs=35)
+model = CNN_trainer(gate_channels=16, lr=1e-3, epochs=20)
 model.trainloop(trainloader=train_loader, validloader=val_loader)
 
 # Restore best model in results_cnn/checkpoint/model_best.pth.tar
