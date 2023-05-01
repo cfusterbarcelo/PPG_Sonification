@@ -260,7 +260,7 @@ class CNN_trainer(CNN):
                     self,
                     self.optim,
                     e,
-                    "./results_cnn/checkpoint/model_best"+str(e)+".pth.tar",
+                    "./results_cnn/checkpoint/model_best.pth.tar",
                 )
 
             print(
@@ -356,13 +356,15 @@ model.trainloop(trainloader=train_loader, validloader=val_loader)
 model.load_state_dict(torch.load("./results_cnn/checkpoint/model_best.pth.tar")["state_dict"])
 
 # Evaluate the model
-test_accuracy = model.eval_performance(test_loader)
-print("Test Accuracy: {:.6f}".format(test_accuracy))
+model.eval_performance(test_loader)
+
 
 # Plot the loss and accuracy during training
 plt.plot(model.accuracy_during_training, label="Accuracy")
 plt.plot(model.valid_accuracy_during_training, label="Validation Accuracy")
 plt.legend()
+# Save figure
+plt.savefig("./results_cnn/accuracy.png")
 
 # Analyse attention weights
 img, labels = next(iter(test_loader))
