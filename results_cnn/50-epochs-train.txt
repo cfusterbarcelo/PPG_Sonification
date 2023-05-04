@@ -1,0 +1,311 @@
+
+Train Epoch: 0 -> Training Loss: 0.910226
+Train Epoch: 0 -> Training Accuracy: 0.631250
+Train Epoch: 0 -> Validation Loss: 0.516136
+Train Epoch: 0 -> Validation Accuracy: 0.723958
+
+Train Epoch: 1 -> Training Loss: 0.430402
+Train Epoch: 1 -> Training Accuracy: 0.811275
+Train Epoch: 1 -> Validation Loss: 0.390004
+Train Epoch: 1 -> Validation Accuracy: 0.820312
+
+Train Epoch: 2 -> Training Loss: 0.328303
+Train Epoch: 2 -> Training Accuracy: 0.855882
+Train Epoch: 2 -> Validation Loss: 0.300678
+Train Epoch: 2 -> Validation Accuracy: 0.894531
+
+Train Epoch: 3 -> Training Loss: 0.286770
+Train Epoch: 3 -> Training Accuracy: 0.883456
+Train Epoch: 3 -> Validation Loss: 0.282736
+Train Epoch: 3 -> Validation Accuracy: 0.889323
+
+Train Epoch: 4 -> Training Loss: 0.237234
+Train Epoch: 4 -> Training Accuracy: 0.907475
+Train Epoch: 4 -> Validation Loss: 0.186686
+Train Epoch: 4 -> Validation Accuracy: 0.925781
+
+Train Epoch: 5 -> Training Loss: 0.188763
+Train Epoch: 5 -> Training Accuracy: 0.928922
+Train Epoch: 5 -> Validation Loss: 0.199170
+Train Epoch: 5 -> Validation Accuracy: 0.895833
+
+Train Epoch: 6 -> Training Loss: 0.191546
+Train Epoch: 6 -> Training Accuracy: 0.928309
+Train Epoch: 6 -> Validation Loss: 0.195698
+Train Epoch: 6 -> Validation Accuracy: 0.937500
+
+Train Epoch: 7 -> Training Loss: 0.152992
+Train Epoch: 7 -> Training Accuracy: 0.941789
+Train Epoch: 7 -> Validation Loss: 0.231184
+Train Epoch: 7 -> Validation Accuracy: 0.929688
+
+Train Epoch: 8 -> Training Loss: 0.159119
+Train Epoch: 8 -> Training Accuracy: 0.936275
+Train Epoch: 8 -> Validation Loss: 0.194872
+Train Epoch: 8 -> Validation Accuracy: 0.925781
+
+Train Epoch: 9 -> Training Loss: 0.147008
+Train Epoch: 9 -> Training Accuracy: 0.942402
+Train Epoch: 9 -> Validation Loss: 0.154000
+Train Epoch: 9 -> Validation Accuracy: 0.937500
+
+Train Epoch: 10 -> Training Loss: 0.119261
+Train Epoch: 10 -> Training Accuracy: 0.958946
+Train Epoch: 10 -> Validation Loss: 0.159735
+Train Epoch: 10 -> Validation Accuracy: 0.937500
+
+Train Epoch: 11 -> Training Loss: 0.105755
+Train Epoch: 11 -> Training Accuracy: 0.956495
+Train Epoch: 11 -> Validation Loss: 0.212744
+Train Epoch: 11 -> Validation Accuracy: 0.924479
+
+Train Epoch: 12 -> Training Loss: 0.111516
+Train Epoch: 12 -> Training Accuracy: 0.958333
+Train Epoch: 12 -> Validation Loss: 0.216485
+Train Epoch: 12 -> Validation Accuracy: 0.928385
+
+Train Epoch: 13 -> Training Loss: 0.118870
+Train Epoch: 13 -> Training Accuracy: 0.955882
+Train Epoch: 13 -> Validation Loss: 0.180028
+Train Epoch: 13 -> Validation Accuracy: 0.924479
+
+Train Epoch: 14 -> Training Loss: 0.098092
+Train Epoch: 14 -> Training Accuracy: 0.965686
+Train Epoch: 14 -> Validation Loss: 0.193525
+Train Epoch: 14 -> Validation Accuracy: 0.908854
+
+Train Epoch: 15 -> Training Loss: 0.078598
+Train Epoch: 15 -> Training Accuracy: 0.967525
+Train Epoch: 15 -> Validation Loss: 0.226157
+Train Epoch: 15 -> Validation Accuracy: 0.920573
+
+Train Epoch: 16 -> Training Loss: 0.094880
+Train Epoch: 16 -> Training Accuracy: 0.959436
+Train Epoch: 16 -> Validation Loss: 0.138919
+Train Epoch: 16 -> Validation Accuracy: 0.941406
+
+Train Epoch: 17 -> Training Loss: 0.088926
+Train Epoch: 17 -> Training Accuracy: 0.963725
+Train Epoch: 17 -> Validation Loss: 0.131424
+Train Epoch: 17 -> Validation Accuracy: 0.945312
+
+Train Epoch: 18 -> Training Loss: 0.076530
+Train Epoch: 18 -> Training Accuracy: 0.971078
+Train Epoch: 18 -> Validation Loss: 0.198403
+Train Epoch: 18 -> Validation Accuracy: 0.949219
+
+Train Epoch: 19 -> Training Loss: 0.080425
+Train Epoch: 19 -> Training Accuracy: 0.967525
+Train Epoch: 19 -> Validation Loss: 0.123490
+Train Epoch: 19 -> Validation Accuracy: 0.930990
+
+Train Epoch: 20 -> Training Loss: 0.079671
+Train Epoch: 20 -> Training Accuracy: 0.965686
+Train Epoch: 20 -> Validation Loss: 0.148899
+Train Epoch: 20 -> Validation Accuracy: 0.933594
+
+Train Epoch: 21 -> Training Loss: 0.067356
+Train Epoch: 21 -> Training Accuracy: 0.968750
+Train Epoch: 21 -> Validation Loss: 0.113858
+Train Epoch: 21 -> Validation Accuracy: 0.957031
+
+Train Epoch: 22 -> Training Loss: 0.069553
+Train Epoch: 22 -> Training Accuracy: 0.972426
+Train Epoch: 22 -> Validation Loss: 0.118632
+Train Epoch: 22 -> Validation Accuracy: 0.972656
+
+Train Epoch: 23 -> Training Loss: 0.071413
+Train Epoch: 23 -> Training Accuracy: 0.973039
+Train Epoch: 23 -> Validation Loss: 0.148748
+Train Epoch: 23 -> Validation Accuracy: 0.937500
+
+Train Epoch: 24 -> Training Loss: 0.069256
+Train Epoch: 24 -> Training Accuracy: 0.969853
+Train Epoch: 24 -> Validation Loss: 0.166994
+Train Epoch: 24 -> Validation Accuracy: 0.933594
+
+Train Epoch: 25 -> Training Loss: 0.055426
+Train Epoch: 25 -> Training Accuracy: 0.974877
+Train Epoch: 25 -> Validation Loss: 0.167553
+Train Epoch: 25 -> Validation Accuracy: 0.925781
+
+Train Epoch: 26 -> Training Loss: 0.063167
+Train Epoch: 26 -> Training Accuracy: 0.970588
+Train Epoch: 26 -> Validation Loss: 0.119226
+Train Epoch: 26 -> Validation Accuracy: 0.945312
+
+Train Epoch: 27 -> Training Loss: 0.062685
+Train Epoch: 27 -> Training Accuracy: 0.979167
+Train Epoch: 27 -> Validation Loss: 0.112667
+Train Epoch: 27 -> Validation Accuracy: 0.960938
+
+Train Epoch: 28 -> Training Loss: 0.050529
+Train Epoch: 28 -> Training Accuracy: 0.980882
+Train Epoch: 28 -> Validation Loss: 0.134303
+Train Epoch: 28 -> Validation Accuracy: 0.957031
+
+Train Epoch: 29 -> Training Loss: 0.047423
+Train Epoch: 29 -> Training Accuracy: 0.980270
+Train Epoch: 29 -> Validation Loss: 0.113524
+Train Epoch: 29 -> Validation Accuracy: 0.953125
+
+Train Epoch: 30 -> Training Loss: 0.049913
+Train Epoch: 30 -> Training Accuracy: 0.981618
+Train Epoch: 30 -> Validation Loss: 0.232665
+Train Epoch: 30 -> Validation Accuracy: 0.925781
+
+Train Epoch: 31 -> Training Loss: 0.056687
+Train Epoch: 31 -> Training Accuracy: 0.981618
+Train Epoch: 31 -> Validation Loss: 0.131114
+Train Epoch: 31 -> Validation Accuracy: 0.949219
+
+Train Epoch: 32 -> Training Loss: 0.047450
+Train Epoch: 32 -> Training Accuracy: 0.981618
+Train Epoch: 32 -> Validation Loss: 0.123183
+Train Epoch: 32 -> Validation Accuracy: 0.964844
+
+Train Epoch: 33 -> Training Loss: 0.053167
+Train Epoch: 33 -> Training Accuracy: 0.976103
+Train Epoch: 33 -> Validation Loss: 0.113957
+Train Epoch: 33 -> Validation Accuracy: 0.968750
+
+Train Epoch: 34 -> Training Loss: 0.055741
+Train Epoch: 34 -> Training Accuracy: 0.979779
+Train Epoch: 34 -> Validation Loss: 0.081569
+Train Epoch: 34 -> Validation Accuracy: 0.968750
+
+Train Epoch: 35 -> Training Loss: 0.032366
+Train Epoch: 35 -> Training Accuracy: 0.985907
+Train Epoch: 35 -> Validation Loss: 0.145420
+Train Epoch: 35 -> Validation Accuracy: 0.947917
+
+Train Epoch: 36 -> Training Loss: 0.033905
+Train Epoch: 36 -> Training Accuracy: 0.985294
+Train Epoch: 36 -> Validation Loss: 0.064696
+Train Epoch: 36 -> Validation Accuracy: 0.976562
+
+Train Epoch: 37 -> Training Loss: 0.033196
+Train Epoch: 37 -> Training Accuracy: 0.981618
+Train Epoch: 37 -> Validation Loss: 0.202481
+Train Epoch: 37 -> Validation Accuracy: 0.968750
+
+Train Epoch: 38 -> Training Loss: 0.051128
+Train Epoch: 38 -> Training Accuracy: 0.981495
+Train Epoch: 38 -> Validation Loss: 0.128717
+Train Epoch: 38 -> Validation Accuracy: 0.980469
+
+Train Epoch: 39 -> Training Loss: 0.037272
+Train Epoch: 39 -> Training Accuracy: 0.987132
+Train Epoch: 39 -> Validation Loss: 0.147255
+Train Epoch: 39 -> Validation Accuracy: 0.957031
+
+Train Epoch: 40 -> Training Loss: 0.037146
+Train Epoch: 40 -> Training Accuracy: 0.985907
+Train Epoch: 40 -> Validation Loss: 0.282373
+Train Epoch: 40 -> Validation Accuracy: 0.944010
+
+Train Epoch: 41 -> Training Loss: 0.033383
+Train Epoch: 41 -> Training Accuracy: 0.985294
+Train Epoch: 41 -> Validation Loss: 0.172441
+Train Epoch: 41 -> Validation Accuracy: 0.924479
+
+Train Epoch: 42 -> Training Loss: 0.041310
+Train Epoch: 42 -> Training Accuracy: 0.982843
+Train Epoch: 42 -> Validation Loss: 0.154906
+Train Epoch: 42 -> Validation Accuracy: 0.968750
+
+Train Epoch: 43 -> Training Loss: 0.028951
+Train Epoch: 43 -> Training Accuracy: 0.987132
+Train Epoch: 43 -> Validation Loss: 0.140920
+Train Epoch: 43 -> Validation Accuracy: 0.972656
+
+Train Epoch: 44 -> Training Loss: 0.027733
+Train Epoch: 44 -> Training Accuracy: 0.986520
+Train Epoch: 44 -> Validation Loss: 0.137921
+Train Epoch: 44 -> Validation Accuracy: 0.941406
+
+Train Epoch: 45 -> Training Loss: 0.036878
+Train Epoch: 45 -> Training Accuracy: 0.987132
+Train Epoch: 45 -> Validation Loss: 0.155892
+Train Epoch: 45 -> Validation Accuracy: 0.964844
+
+Train Epoch: 46 -> Training Loss: 0.027424
+Train Epoch: 46 -> Training Accuracy: 0.990809
+Train Epoch: 46 -> Validation Loss: 0.068972
+Train Epoch: 46 -> Validation Accuracy: 0.976562
+
+Train Epoch: 47 -> Training Loss: 0.030554
+Train Epoch: 47 -> Training Accuracy: 0.991422
+Train Epoch: 47 -> Validation Loss: 0.095567
+Train Epoch: 47 -> Validation Accuracy: 0.972656
+
+Train Epoch: 48 -> Training Loss: 0.035343
+Train Epoch: 48 -> Training Accuracy: 0.987745
+Train Epoch: 48 -> Validation Loss: 0.163594
+Train Epoch: 48 -> Validation Accuracy: 0.953125
+
+Train Epoch: 49 -> Training Loss: 0.055027
+Train Epoch: 49 -> Training Accuracy: 0.979044
+Train Epoch: 49 -> Validation Loss: 0.142204
+Train Epoch: 49 -> Validation Accuracy: 0.957031
+Test Loss: 0.317170
+Test Accuracy: 0.952083
+
+CNN_trainer(
+  (conv1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1))
+  (pool1): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  (dropout1): Dropout2d(p=0.7, inplace=False)
+  (attn1): CBAM(
+    (ChannelGate): ChannelGate(
+      (mlp): Sequential(
+        (0): Flatten()
+        (1): Linear(in_features=16, out_features=1, bias=True)
+        (2): ReLU()
+        (3): Linear(in_features=1, out_features=16, bias=True)
+      )
+    )
+    (SpatialGate): SpatialGate(
+      (compress): ChannelPool()
+      (spatial): BasicConv(
+        (conv): Conv2d(2, 1, kernel_size=(7, 7), stride=(1, 1), padding=(3, 3), bias=False)
+        (bn): BatchNorm2d(1, eps=1e-05, momentum=0.01, affine=True, track_running_stats=True)
+      )
+    )
+  )
+  (relu): ReLU()
+  (fc1): Linear(in_features=197136, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=1, bias=True)
+  (sig): Sigmoid()
+  (criterion): BCELoss()
+)
+
+
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1         [-1, 16, 222, 222]             448
+              ReLU-2         [-1, 16, 222, 222]               0
+         MaxPool2d-3         [-1, 16, 111, 111]               0
+         Dropout2d-4         [-1, 16, 111, 111]               0
+           Flatten-5                   [-1, 16]               0
+            Linear-6                    [-1, 1]              17
+              ReLU-7                    [-1, 1]               0
+            Linear-8                   [-1, 16]              32
+           Flatten-9                   [-1, 16]               0
+           Linear-10                    [-1, 1]              17
+             ReLU-11                    [-1, 1]               0
+           Linear-12                   [-1, 16]              32
+      ChannelGate-13         [-1, 16, 111, 111]               0
+      ChannelPool-14          [-1, 2, 111, 111]               0
+           Conv2d-15          [-1, 1, 111, 111]              98
+      BatchNorm2d-16          [-1, 1, 111, 111]               2
+        BasicConv-17          [-1, 1, 111, 111]               0
+      SpatialGate-18         [-1, 16, 111, 111]               0
+             CBAM-19         [-1, 16, 111, 111]               0
+           Linear-20                  [-1, 256]      50,467,072
+             ReLU-21                  [-1, 256]               0
+        Dropout2d-22                  [-1, 256]               0
+...
+Forward/backward pass size (MB): 20.03
+Params size (MB): 192.52
+Estimated Total Size (MB): 213.12

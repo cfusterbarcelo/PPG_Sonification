@@ -313,7 +313,7 @@ class CNN_trainer(CNN):
 
 ############################ DATASET ############################
 
-dataset_path = "C:/Users/CaterinaFusterBarcel/Documents/DATA/PPG_Sonification/DL-images-Scalograms"
+dataset_path = "D:/Data/PPG-15Sec/PPG-15Sec/DL-images-Scalograms/"
 
 # Define the transforms to be applied to the images
 transform = torchvision.transforms.ToTensor()
@@ -349,7 +349,7 @@ test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True)
 # Set cuda enviroment os = 0
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
-model = CNN_trainer(gate_channels=16, lr=1e-3, epochs=20)
+model = CNN_trainer(gate_channels=16, lr=1e-3, epochs=50)
 model.trainloop(trainloader=train_loader, validloader=val_loader)
 
 # Restore best model in results_cnn/checkpoint/model_best.pth.tar
@@ -357,14 +357,15 @@ model.load_state_dict(torch.load("./results_cnn/checkpoint/model_best.pth.tar")[
 
 # Evaluate the model
 model.eval_performance(test_loader)
+# Print parameters and resume of the model
+print(model)
 
 
 # Plot the loss and accuracy during training
-plt.plot(model.accuracy_during_training, label="Accuracy")
+plt.plot(model.accuracy_during_training, label="Training Accuracy")
 plt.plot(model.valid_accuracy_during_training, label="Validation Accuracy")
 plt.legend()
-# Save figure
-plt.savefig("./results_cnn/accuracy.png")
+plt.savefig("./results_cnn/accuracy-train-val.png")
 
 # Analyse attention weights
 img, labels = next(iter(test_loader))
@@ -390,3 +391,15 @@ for i in range(10):
     axes[i, 4].set_title("Attention Mask Channel 3")
     axes[i, 5].imshow(attn[i, 4, :, :].cpu().detach().numpy())
     axes[i, 5].set_title("Attention Mask Channel 4")
+
+plt.savefig("./results_cnn/attention.png")
+
+# PRINT AND DRAW THE NETWORK
+# Draw in a plot network's architecture of the model
+from torchsummary import summary
+summary(model, (3, 224, 224), device="cpu")
+# Plot the network's architecture of the model
+from torchviz import make_dot
+x = torch.randn(1, 3, 224, 224).requires_grad_(True)
+y, _ = model(x)
+make_dot(y, params=dict(list(model.named_parameters()))).render("./results_cnn/model_architecture", format="png")
