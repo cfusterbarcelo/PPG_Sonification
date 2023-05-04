@@ -51,10 +51,14 @@ With a KNN we are able to extract some explainability through analysis of the fe
 
 ## LG and LGBM Classifiers
 
+<p align="center">
+
 | Algorithm | Accuracy |
 |-----------|----------|
 | LGBMClassifier | 89.15% |
 | GBClassifier | 88.66% |
+
+</p>
 
 Confusion matrix from both classifiers are the following:
 <p align="center">
@@ -97,8 +101,8 @@ Here we have the network's architecture:
 <p align="center">
     <img src="./results_cnn/model_architecture.png"
         alt="Images obtained from the PPG signal to perform the AF analysis"
-        width="80%"
-        heigth="80%">
+        width="90%"
+        heigth="90%">
 </p>
 Here we have the network detailed layer by layer:
 
@@ -137,8 +141,8 @@ Hence, after running the network for 50 epochs we obtain the following training 
 <p align="center">
     <img src="./results_cnn/accuracy-train-val-50epochs.png"
         alt="Images obtained from the PPG signal to perform the AF analysis"
-        width="60%"
-        heigth="60%">
+        width="50%"
+        heigth="50%">
 </p>
 
 The evolution of training, validation and test are in [here](./results_cnn/50-epochs-train.txt). 
